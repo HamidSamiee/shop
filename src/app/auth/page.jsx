@@ -14,14 +14,14 @@ const AuthPage = () => {
         setPhoneNumber(e.target.value)
     }
 
-    const {data,error,isPending,mutateAsync } = useMutation({
+    const {data,error,isPending,mutateAsync:mutateGetOtp } = useMutation({
         mutationFn:getOtp,
     })
 
     const sendOTPHandler = async(e) => {
         e.preventDefault();
         try {
-            const data = await mutateAsync({phoneNumber});
+            const data = await mutateGetOtp({phoneNumber});
             toast.success(data.message)
         } catch (error) {
             toast.error(error?.response?.data?.message)
