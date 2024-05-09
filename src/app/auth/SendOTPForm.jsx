@@ -2,7 +2,7 @@ import Text_Field from '@/common/Text_Field'
 import React from 'react'
 import { Circles } from 'react-loader-spinner'
 
-const SendOTPForm = ({value,onChange,onSubmit,isPending}) => {
+const SendOTPForm = ({value,onChange,onSubmit,getPending}) => {
   return (
       <form className='space-y-10' onSubmit={onSubmit}>
           <Text_Field
@@ -13,7 +13,7 @@ const SendOTPForm = ({value,onChange,onSubmit,isPending}) => {
           />
           <div className="flex justify-center">
               {
-              isPending ?
+              getPending ?
                   <Circles  height='50px' color='blue' />
                   :
                   <button type='submit' className='btn wh btn--primary w-full flex justify-center'>
