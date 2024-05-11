@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useMutation } from '@tanstack/react-query';
 import { checkOtp, getOtp } from '@/services/authServices';
 import CheckOTPForm from './CheckOTPForm';
+import { useRouter } from 'next/navigation';
 const RESEND_TIME = 90;
 
 const AuthPage = () => {
@@ -13,6 +14,7 @@ const AuthPage = () => {
     const [otp, setOtp] = useState('');
     const [step, setStep] = useState(1);
     const [time, setTime] = useState(RESEND_TIME);
+    const router = useRouter();
 
     useEffect(() => {
         
@@ -50,9 +52,13 @@ const AuthPage = () => {
     const checkOtpHandler = async(e) => {
         e.preventDefault();
         try {
-            const data = await mutateCheckOtp({phoneNumber,otp});
-            toast.success(data.message)
-            console.log(data.message)
+            const {message,user}= await mutateCheckOtp({phoneNumber,otp});
+            toast.success(message)
+            if (user.isActive) {
+                router.push("/");
+            } else {
+                router.push("/complete-profile")
+            }
         } catch (error) {
             toast.error(error?.response?.data?.message)
         }
