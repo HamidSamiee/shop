@@ -33,7 +33,19 @@ const CompleteProfile = () => {
               
               <form onSubmit={handleSubmit(onSubmit)} className='space-y-8'>
                     <div>
-                        <label htmlFor="name" className='block mb-4'>نام و نام خانوادگی</label>
+                      <label htmlFor="name" className=' mb-2 flex justify-between items-center'>نام و نام خانوادگی
+                            {errors.name?.type === "required" && (
+                                <small className='text-red-500'>نام کاربری را وارد کنید</small>
+                            )}
+
+                            {errors.name?.type === "minLength" && (
+                                <small className='text-red-500'>نام کاربری حداقل باید ۵ کاراکتر باشد</small>
+                            )}
+
+                            {errors.name?.type === "matchPattern" && (
+                                <small className='text-red-500'>نام کاربری باید حداقل یک کاراکترحروف و کاراکتر عددو کاراکتر خاص باشد</small>
+                            )}
+                      </label>
                         <input
                             id="name"
                             {...register('name', {
@@ -45,21 +57,15 @@ const CompleteProfile = () => {
                             })}
                             className='textField__input'
                         />
-                         {errors.name?.type === "required" && (
-                                <small className='text-red-500'>نام کاربری را وارد کنید</small>
-                            )}
-
-                            {errors.name?.type === "minLength" && (
-                                <small className='text-red-500'>نام کاربری حداقل باید ۵ کاراکتر باشد</small>
-                            )}
-
-                            {errors.name?.type === "matchPattern" && (
-                                <small className='text-red-500'>نام کاربری باید حداقل یک کاراکترحروف و کاراکتر عددو کاراکتر خاص باشد</small>
-                            )}
+                         
                     </div>
 
                     <div>
-                        <label htmlFor="email">ایمیل</label>
+                      <label htmlFor="email" className='mb-2 flex justify-between items-center'>ایمیل
+                          {errors.email?.message && (
+                            <small className='text-red-500'>{errors.email.message}</small>
+                        )}
+                        </label>
                         <input
                             id="email"
                             {...register("email", {
@@ -75,9 +81,7 @@ const CompleteProfile = () => {
                             className='textField__input'
                         />
 
-                        {errors.email?.message && (
-                            <small className='text-red-500'>{errors.email.message}</small>
-                        )}
+                        
                     </div>
                     {
                         isCompletingProfile ?
