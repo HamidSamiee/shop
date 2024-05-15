@@ -15,3 +15,11 @@ export function completeProfile(data) {
 export function getUserData() {
     return http.get('/user/profile').then(({ data }) => data.data);
 }
+
+export function updateProfile(data) {
+    return http.patch('/user/update', data).then(({ data }) => data.data);
+}
+
+export function logoutProfile() {
+    return http.post('/user/logout');
+}
