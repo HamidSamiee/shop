@@ -10,7 +10,7 @@ const Header = () => {
     const { data, isLoading } = useGetUser();
 
     const { user, cart } = data || {};
-console.log({ user, cart })
+// console.log({ user, cart })
   return (
       <header className='shadow-md mb-10 '>
           
@@ -27,9 +27,19 @@ console.log({ user, cart })
                     محصولات
                     </Link>
                 </li>
-            
                 <li className="block py-2">
-                    <Link href='/products' >
+                    <Link href='/profile' >
+                    پنل کاربر
+                    </Link>
+                </li>
+                  
+                <li className="block py-2">
+                    <Link href='/admin' >
+                    پنل ادمین
+                    </Link>
+                </li>
+                <li className="block py-2">
+                    <Link href='/cart' >
                     سبد خرید  ({cart ? toPersianDigits( cart.payDetail.productIds.length) : toPersianDigits(0)})
                     </Link>
                 </li>
