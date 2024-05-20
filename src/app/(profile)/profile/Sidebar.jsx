@@ -8,7 +8,7 @@ const Sidebar = () => {
 
   const logoutHandler =async () => {
     
-    await logoutProfile();
+    await logoutProfile();  
 
     document.location.href = '/';
   }
