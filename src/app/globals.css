@@ -44,8 +44,11 @@
   .btn--primary {
     @apply px-4 py-3 bg-primary-900 text-white hover:bg-primary-800 shadow-lg shadow-primary-300;
   }
+  .btn--info {
+    @apply px-4 py-3 text-white bg-purple-500 hover:bg-purple-400 shadow-lg shadow-purple-200;
+  }
   .table__th {
-    @apply border-b-2 border-b-gray-500 font-medium p-3 pr-8 pb-3 text-right;
+    @apply border-b-2 border-b-gray-500 font-medium p-3 pr-6 pb-3 text-right;
   }
   .table__td {
     @apply border-b  border-b-gray-300 p-3 pr-8 pb-3 text-right;

@@ -1,4 +1,4 @@
-import toPersianDigits from '@/utils/toPersianDigits'
+import {toPersianDigits} from '@/utils/toPersianDigits'
 import React from 'react'
 import { Circles } from 'react-loader-spinner'
 import OTPInput from 'react-otp-input'
@@ -14,7 +14,7 @@ const CheckOTPForm = ({otpResponse, onSubmit, checkPending,otp,setOtp,setStep,ti
                     <MdKeyboardBackspace className='rotate-180 font-bold' />
                 </button>
                 <p className="">
-                  {otpResponse && <p className=''>{otpResponse?.message}</p>}
+                  {otpResponse && <p>{otpResponse?.message}</p>}
                 </p>
                 
                 <div className="">
@@ -57,7 +57,7 @@ const CheckOTPForm = ({otpResponse, onSubmit, checkPending,otp,setOtp,setStep,ti
                   <button type='submit' className='btn wh btn--primary w-full flex justify-center'>
                         تایید
                   </button>
-          }
+              }
           </div>
           
 

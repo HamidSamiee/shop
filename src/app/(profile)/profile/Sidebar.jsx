@@ -17,10 +17,16 @@ const Sidebar = () => {
     <div>
         <ul className="flex flex-col space-y-8">
             <li className="">
-                  <Link href="/profile">صفحه اصلی</Link>  
+                  <Link href="/">صفحه اصلی</Link>  
+            </li>
+            <li className="">
+                  <Link href="/profile"> داشبورد</Link>  
             </li>
             <li className="">
                   <Link href="/profile/me"> اطلاعات کاربری</Link>
+            </li>
+            <li className="">
+                  <Link href="/profile/payments"> سفارشات شما</Link>
             </li>
             <li className="">
                   <button onClick={logoutHandler}> خروج از حساب کاربری </button>

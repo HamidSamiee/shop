@@ -1,7 +1,7 @@
 "use client"
 
 import useGetUser from '@/hooks/useGetUser'
-import toPersianDigits from '@/utils/toPersianDigits'
+import {toPersianDigits} from '@/utils/toPersianDigits'
 import Link from 'next/link'
 import React from 'react'
 
