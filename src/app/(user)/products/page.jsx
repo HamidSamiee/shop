@@ -7,15 +7,21 @@ import queryString from 'query-string';
 import toLocalDate from '@/utils/toLocalDate';
 import Link from 'next/link';
 import AddToCart from './AddToCart';
+import ProductLike from './ProductLike';
+import { cookies } from 'next/headers';
+import { toStringCookeis } from '@/utils/toStringCookeis';
 
 export const dynamic = "force-dynamic"; //dynamic rendering ssr
 
 async function Products({ searchParams }){
 
   // console.log(searchParams)
+  // console.log(cookies().getAll())
+  const cookieStore = cookies();
+  const strCookies = toStringCookeis(cookieStore);
 
   const {categories} =await getAllCategories();
-  const {products} =await getAllProducts(queryString.stringify(searchParams));
+  const {products} =await getAllProducts(queryString.stringify(searchParams),strCookies);
 
 
   return (
@@ -39,6 +45,7 @@ async function Products({ searchParams }){
                       >
                         مشاهده محصول
                       </Link>
+                      <ProductLike product={product} />
                       <AddToCart product={product} />
                     </div>
                   })
