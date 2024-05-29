@@ -23,3 +23,9 @@ export function updateProfile(data) {
 export function logoutProfile() {
     return http.post('/user/logout');
 }
+
+// admin panel
+
+export function getAllUsersData() {
+    return http.get('/admin/user/list').then(({ data }) => data.data);
+}

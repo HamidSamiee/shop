@@ -23,3 +23,20 @@ export function getProductBySlug(slug) {
 export function likeProduct(id) {
     return http.post(`/product/like/${id}`).then(({ data }) => data.data);
 }
+
+// admin services
+export function addProdcut(data) {
+    return http.post(`/admin/product/add`, data).then(({ data }) => data.data);
+}
+
+export function removeProdcut(id) {
+    return http.delete(`admin/product/remove/${id}`).then(({ data }) => data.data);
+}
+
+export function getProductById(id) {
+    return http.get(`/product/${id}`).then(({ data }) => data.data);
+}
+
+export function updateProduct({ productId, data }) {
+    return http.patch(`/admin/product/update/${productId}`, data).then(({ data }) => data.data);
+}

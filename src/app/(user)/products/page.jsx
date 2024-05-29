@@ -20,7 +20,8 @@ async function Products({ searchParams }){
   const cookieStore = cookies();
   const strCookies = toStringCookeis(cookieStore);
 
-  const {categories} =await getAllCategories();
+  const { categories } = await getAllCategories();
+
   const {products} =await getAllProducts(queryString.stringify(searchParams),strCookies);
 
 
