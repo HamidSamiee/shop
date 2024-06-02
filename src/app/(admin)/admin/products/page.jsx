@@ -4,11 +4,8 @@ import ProductsTable from './ProductsTable'
 import { useAddProduct, useGetProducts } from '@/hooks/useProducts'
 import { Circles, ThreeDots } from 'react-loader-spinner';
 import { IoAddCircle, IoCloseOutline } from 'react-icons/io5';
-import Text_Field from '@/common/Text_Field';
 import { useFormik } from 'formik';
-import Select from 'react-select';
 import { useGetCategories } from '@/hooks/useCategories';
-import { TagsInput } from 'react-tag-input-component';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import ProductForm from '@/components/productForm';
@@ -28,13 +25,11 @@ const initialValues={
 
 const Products = () => {
 
-  const router = useRouter();
-
   const [modal, setModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [tags, setTags] = useState([]);
 
-  const { isLoading, data } = useGetProducts();
+  const { refetch ,isLoading, data } = useGetProducts();
   const { products } = data || {};
 
   const { data:categoryData } = useGetCategories();
@@ -49,8 +44,7 @@ const Products = () => {
      try {
        const { message } = await mutateAsync({...values,tags,category:selectedCategory._id});
        setModal(false);
-      //  router.push('"/admin/products"')
-       router.refresh();
+       refetch();
        toast.success(message);
      } catch (error) {
       toast.error(error?.response?.data?.message)
@@ -82,10 +76,8 @@ const Products = () => {
               <hr className='text-black w-full h-0.5 my-2' />
               <section>
                     <ProductForm
-                        onSubmitProduct={formik.handleSubmit}
+                        formik={formik}
                         value={formik.values.name}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
                         selectedCategory={selectedCategory}
                         setSelectedCategory={setSelectedCategory}
                         categories={categories}

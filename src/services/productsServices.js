@@ -30,7 +30,7 @@ export function addProdcut(data) {
 }
 
 export function removeProdcut(id) {
-    return http.delete(`admin/product/remove/${id}`).then(({ data }) => data.data);
+    return http.delete(`/admin/product/remove/${id}`).then(({ data }) => data.data);
 }
 
 export function getProductById(id) {

@@ -109,10 +109,14 @@ export const categorysListsTheads = [
     },
     {
         id: 4,
-        label: "توضیحات"
+        label: "نوع"
     },
     {
         id: 5,
+        label: "توضیحات"
+    },
+    {
+        id: 6,
         label: "عملیات"
     },
 ]

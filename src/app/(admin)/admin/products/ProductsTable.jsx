@@ -42,7 +42,7 @@ const ProductsTable = ({ products }) => {
                                                 <td className="table__td">{toPersianDigits(index+1)}</td>
                                                 <td className="table__td truncate">{product.title}</td>
                                                 <td className="table__td">{product.category.title }</td>
-                                                <td className="table__td2 text-center">{toPersianDigitsWithComma(product.price) }</td>
+                                                <td className="table__td text-center">{toPersianDigitsWithComma(product.price) }</td>
                                                 <td className="table__td whitespace-nowrap text-center">{toPersianDigits(product.discount) }</td>
                                                 <td className="table__td text-center">{toPersianDigitsWithComma(product.offPrice)}</td>
                                                 <td className="table__td text-center">{toPersianDigits(product.countInStock)}</td>
