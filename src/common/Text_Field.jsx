@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Text_Field = ({label,name,value,onChange,onBlur,type,register}) => {
+const Text_Field = ({label,name,value,onChange,onBlur,type,register = ()=>{}}) => {
   return (
     <div >
           <label htmlFor={name} className='block mb-4 '>{label}</label>

@@ -1,5 +1,5 @@
 'use client'
-import useGetPayments from '@/hooks/useGetPayments'
+import useGetPayments from '@/hooks/usePayments'
 import React from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import PaymentTable from './PaymentTable'

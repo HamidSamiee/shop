@@ -66,7 +66,7 @@ const ProductsTable = ({ products }) => {
                                 }  
                         </tbody>
                 </table>
-          </div>
+     </div>
   )
 }
 

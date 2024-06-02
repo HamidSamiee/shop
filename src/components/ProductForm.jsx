@@ -55,6 +55,8 @@ const productsListsTitles = [
 
 const ProductForm = ({
     formik,
+    onSubmitProduct,
+    onChange,
     value,
     selectedCategory,
     setSelectedCategory,
@@ -69,7 +71,7 @@ const ProductForm = ({
  
   return (
     
-        <form onSubmit={formik.handleSubmit} className={className}>
+        <form onSubmit={formik?.handleSubmit || onSubmitProduct} className={className}>
                         {
                           productsListsTitles.map(item => {
                             return <Text_Field
@@ -77,8 +79,8 @@ const ProductForm = ({
                                         label={item.label }
                                         name={item.name }
                                         value={value[item.name] ?? '' }
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
+                                        onChange={formik?.handleChange || onChange}
+                                        onBlur={formik?.handleBlur}
                                     />
                           })
                             }

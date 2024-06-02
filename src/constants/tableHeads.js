@@ -120,3 +120,42 @@ export const categorysListsTheads = [
         label: "عملیات"
     },
 ]
+
+export const adminPaymentListTableTHeads = [
+    {
+        id: 1,
+        label: "#",
+    },
+    {
+        id: 2,
+        label: "شماره فاکتور",
+    },
+    {
+        id: 3,
+        label: "توضیحات",
+    },
+    {
+        id: 4,
+        label: "کاربر",
+    },
+    {
+        id: 5,
+        label: "محصولات",
+    },
+    {
+        id: 6,
+        label: "مبلغ",
+    },
+    {
+        id: 7,
+        label: "تاریخ",
+    },
+    {
+        id: 8,
+        label: "وضعیت",
+    },
+    {
+        id: 9,
+        label: "مشاهده",
+    },
+];

@@ -58,8 +58,8 @@ const DetailProduct = () => {
   // console.log(product)
   
   return (
-    <div className="overflow-auto shadow-xl rounded-lg mt-5">
-              <table className="">
+    
+              <table className="overflow-auto shadow-xl rounded-lg mt-5 p-3">
                         <thead>
                             <tr>
                                 {
@@ -70,9 +70,9 @@ const DetailProduct = () => {
                             </tr>
                         </thead>
                         <tbody>
-                              {isLoading ? <div className="h-screen flex items-center justify-center">
+                              {isLoading ? <tr className="h-screen flex items-center justify-center">
                                             <ThreeDots  height='30px' color='blue' />
-                                          </div> 
+                                          </tr> 
                                         : 
                                               
                                               <tr className=''>
@@ -85,13 +85,13 @@ const DetailProduct = () => {
                                                           <td className="table__td text-center">{toPersianDigitsWithComma(product.offPrice)}</td>
                                                           <td className="table__td text-center">{toPersianDigits(product.countInStock)}</td>
                                                           <td className="table__td">{product.imageLink }</td>
-                                                          <td className="table__td flex flex-col gap-y-2 whitespace-normal">{product.tags.map((tag,i) => <span key={i} className='badge badge--secondary '>{tag}</span>)}</td>
-                                                                                        </tr>
+                                                          <td className="table__td flex flex-col justify-center items-center gap-y-2 whitespace-normal">{product.tags.map((tag,i) => <span key={i} className='badge badge--secondary'>{tag}</span>)}</td>
+                                              </tr>
                                              
                               }  
                         </tbody>
                 </table>
-          </div>
+        
   )
 }
 
