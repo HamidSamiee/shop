@@ -3,11 +3,11 @@ import Text_Field from '@/common/Text_Field';
 import { useAddCategory, useGetCategories } from '@/hooks/useCategories';
 import { useFormik } from 'formik';
 import React, { useState } from 'react'
-import { IoCloseOutline } from 'react-icons/io5';
+import { IoAddCircle, IoCloseOutline } from 'react-icons/io5';
 import { Circles, ThreeDots } from 'react-loader-spinner';
 import CategoriesTable from './CategoriesTable';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
+import Select from 'react-select'
 
 export const categoriesListsTitles = [
     {
@@ -25,6 +25,31 @@ export const categoriesListsTitles = [
         label: "توضیحات",
         name:"description",
       },
+     
+]
+
+export const categoriesTypes = [
+    {
+        id: 1,
+        label:"محصول",
+        value:"product",
+      },
+    {
+        id: 2,
+        label: " پست ",
+        value:"post",
+  },
+  {
+        id:3,
+        label: "نظرات",
+        value:"comment",
+      },
+      {
+        id:4 ,
+        label: "تیکت",
+        value:"ticket",
+      },
+      
 ]
 const initialValues={
       title: "",
@@ -34,21 +59,22 @@ const initialValues={
 
 const Categoreis = () => {
   const [modal, setModal] = useState(false);
-  const router = useRouter();
 
-  const { data, isLoading } = useGetCategories();
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+//  console.log(selectedCategory)
+  const { refetch,data, isLoading } = useGetCategories();
   const { categories } = data || {};
-
+// console.log(categories)
   const { mutateAsync } = useAddCategory();
   
   const onSubmit = async (values) => {
-    console.log(values)
+    // console.log({...values,type:selectedCategory.value})
     
      try {
-       const { message } = await mutateAsync(values);
+       const { message } = await mutateAsync({...values,type:selectedCategory?.value });
        setModal(false);
-      //  router.push('"/admin/products"')
-       router.refresh();
+       refetch();
        toast.success(message);
      } catch (error) {
       toast.error(error?.response?.data?.message)
@@ -65,7 +91,7 @@ const Categoreis = () => {
        <div className="flex items-center justify-between">
           <h1 className="font-bold text-secondary-500 mb-6">دسته بندی ها</h1>
           <div className="">
-            <button onClick={()=>setModal(prev=>!prev)}  className='btn text-primary-900'>افزودن دسته بندی</button>
+            <button onClick={()=>setModal(prev=>!prev)}  className='btn text-primary-900 flex items-center gap-x-2'><IoAddCircle className='text-primary-900 w-6 h-6'/>افزودن دسته بندی</button>
            </div> 
       </div>
      {
@@ -91,6 +117,15 @@ const Categoreis = () => {
                                     />
                           })
                             }
+                            <div className="">
+                              <label htmlFor="" className='mb-2'>نوع</label>
+                              <Select
+                                className='mb-5'
+                                value={selectedCategory}
+                                options={categoriesTypes}
+                                onChange={setSelectedCategory}
+                              />
+                            </div>
                   
                            <footer className='flex items-center justify-between gap-x-3 mt-5'>
                               {
