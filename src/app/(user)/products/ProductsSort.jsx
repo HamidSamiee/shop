@@ -30,7 +30,7 @@ const ProductsSort = () => {
     
 
   // console.log(searchParams.getAll("category")[0].split(","));
-  console.log(searchParams.get("category")?.split(",") ||[]);
+  // console.log(searchParams.get("category")?.split(",") ||[]);
   
   const createQueryString = useCallback(
     (name, value) => {
@@ -48,14 +48,14 @@ const ProductsSort = () => {
     }
   return (
     <div>
-        <div className="col-span-1">
-                <h1 className="font-bold mb-3">مرتب سازی محصولات</h1>
-                <ul className="flex flex-col gap-y-3">
+        <div className="col-span-1 flex flex-col items-start">
+                <h1 className="font-bold mb-1 md:mb-3 flex whitespace-nowrap gap-x-1">مرتب سازی<span className='hidden md:block'>محصولات</span></h1>
+                <ul className="hidden md:flex gap-x-3 justify-start md:flex-col md:gap-y-3 ">
                     {
                         sortOptions.map(s => {
                             return <RadioInput_Field
-                                key={s._id}
-                                id={s._id}
+                                key={s.id}
+                                id={s.id}
                                 label={s.label}
                                 name='product_sort'
                                 value={s.value}

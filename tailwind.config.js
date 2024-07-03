@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { keyframes } = require('@emotion/react');
+const { transform } = require('next/dist/build/swc');
 const { fontFamily } = require("tailwindcss/defaultTheme");
 
 function withOpacity(variableName) {

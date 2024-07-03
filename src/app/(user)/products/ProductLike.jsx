@@ -24,7 +24,7 @@ const ProductLike = ({ product }) => {
     }
 
   return (
-    <div>
+    <div className='mr-5'>
         <button onClick={likeHandler}>
               {
                   product.isLiked ?

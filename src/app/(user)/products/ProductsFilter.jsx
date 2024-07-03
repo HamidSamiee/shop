@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useState } from 'react'
 
 const ProductsFilter = ({ categories }) => {
-    
+  const [filterOpen, setfilterOpen] = useState(false)  
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -25,6 +25,7 @@ const ProductsFilter = ({ categories }) => {
 
   const categoryHandler = (e) => {
     const value = e.target.value;
+    console.log(value)
     if (selectedCategories.includes(value)) {
       const categories = selectedCategories.filter((c) => c !== value);
       setSelectedCategories(categories);
@@ -40,10 +41,10 @@ const ProductsFilter = ({ categories }) => {
   };
 
   return (
-      <div>
+      <div className='border-1 rounded-md border-secondary-600 bg-secondary-50 md:border-none md:bg-white'>
           <div className="col-span-1">
-                <h1 className="font-bold mb-3">دسته بندی محصولات</h1>
-                <ul className="flex flex-col gap-y-3">
+                <h1 className="font-bold mb-1 md:mb-3 whitespace-nowrap flex gap-x-1" onClick={()=>setfilterOpen(!filterOpen)}>دسته بندی <span className='hidden md:block'>محصولات</span></h1>
+                <ul className="hidden md:flex gap-x-3 md:flex-col md:gap-y-3" >
                     {
                         categories.map(category => {
                             return <Checkbox_Field

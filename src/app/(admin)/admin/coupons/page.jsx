@@ -14,7 +14,7 @@ const CouponsPage = () => {
 //  console.log(coupons)
  
   return (
-    <div className='flex flex-col gap-y-10'>
+    <div className='w-full flex flex-col gap-y-10'>
       <div className="flex w-full justify-between items-center">
         <h1 className='font-bold text-secondary-600'>کدهای تخفیف </h1>
         <button onClick={()=>router.push('/admin/coupons/add')} className=" flex gap-x-1 items-center text-primary-900 font-bold">

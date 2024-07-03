@@ -15,13 +15,11 @@ export default function RootLayout({ children }) {
       <body className={`${vazirFont.variable} font-sans`} suppressHydrationWarning={true}>
         <Providers>
           <Toaster />
-          <div className="container xl:max-w-screen-xl">
+          <div className="container xl:max-w-screen-xl overflow-x-hidden">
             
-            <div className="grid grid-cols-4 h-screen p-4">
-                <div className="col-span-1 overflow-y-auto p-4 bg-gray-200">
-                    <Sidebar />
-                </div>
-                <div className="col-span-3 overflow-y-auto space-y-5 p-4 bg-white">
+            <div className="grid grid-flow-col h-screen p-4">
+                <Sidebar />
+                <div className={`col-span-6 sm:col-span-7 md:col-span-9  overflow-y-auto space-y-5 p-4 bg-white text-sm md:text-base`}>
                   {children}
                 </div>
             </div>

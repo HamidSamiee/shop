@@ -15,6 +15,15 @@ export function getAllProducts(qs, cookies) {
     //     .then((res) => res.json())
     //     .then(({ data }) => data);
 }
+export function getProductsBySearch(qs, cookies) {
+    return http.get(`/product/list?${qs}`,
+        {
+            headers: {
+                cookie: cookies,
+            }
+        }
+    ).then(({ data }) => data.data)
+}
 
 export function getProductBySlug(slug) {
     return http.get(`/product/slug/${slug}`).then(({ data }) => data.data);

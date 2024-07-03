@@ -4,7 +4,7 @@ import { Circles } from 'react-loader-spinner'
 
 const SendOTPForm = ({value,onChange,onSubmit,getPending}) => {
   return (
-      <form className='space-y-10' onSubmit={onSubmit}>
+      <form className='space-y-6 ' onSubmit={onSubmit}>
           <Text_Field
               label="شماره تلفن"
               name="phoneNumber"

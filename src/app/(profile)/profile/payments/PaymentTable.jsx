@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { userPaymentsTheads } from '@/constants/tableHeads'
 import toLocalDate from '@/utils/toLocalDate'
@@ -18,7 +19,7 @@ const PaymentTable = ({payments}) => {
                         </thead>
                         <tbody>
                                 { payments &&
-                                    payments.map((payment,index) =>{
+                                    payments?.map((payment,index) =>{
                                     return <tr key={payment._id}>
                                                 <td className="table__td">{toPersianDigits(index)}</td>
                                                 <td className="table__td truncate">{toPersianDigits(payment.invoiceNumber)}</td>

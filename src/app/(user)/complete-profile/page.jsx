@@ -1,13 +1,14 @@
 "use client"
 import { completeProfile } from '@/services/authServices';
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import { Circles } from 'react-loader-spinner';
 
 const CompleteProfile = () => {
-
+    const router=useRouter();
 
     const { handleSubmit, register,formState:{errors} } = useForm();
 
@@ -20,6 +21,7 @@ const CompleteProfile = () => {
         try {
             const {message,user}= await mutateAsync(data);
             toast.success(message)
+            router.push('/')
            console.log(message)
         } catch (error) {
             toast.error(error?.response?.data?.message)
@@ -42,9 +44,9 @@ const CompleteProfile = () => {
                                 <small className='text-red-500'>نام کاربری حداقل باید ۵ کاراکتر باشد</small>
                             )}
 
-                            {errors.name?.type === "matchPattern" && (
+                            {/* {errors.name?.type === "matchPattern" && (
                                 <small className='text-red-500'>نام کاربری باید حداقل یک کاراکترحروف و کاراکتر عددو کاراکتر خاص باشد</small>
-                            )}
+                            )} */}
                       </label>
                         <input
                             id="name"
@@ -52,7 +54,7 @@ const CompleteProfile = () => {
                                 required: true,
                                 validate: {
                                     minLength: (v) => v.length >= 5,
-                                    matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v),
+                                    // matchPattern: (v) => /^[a-zA-Z0-9_]+$/.test(v),
                                 }
                             })}
                             className='textField__input'

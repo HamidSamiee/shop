@@ -41,16 +41,16 @@ const AddToCart = ({ product }) => {
         return user.cart?.products.some(p=>p.productId===product._id)
     }
   return (
-          <div className="">
+          <div className="w-full">
           {isCardIn(user,product) ? (
-              <button className='btn btn--info'>
+              <button className='btn btn--info  shadow-lg w-full'>
                     <Link href='/cart' className='' >ادامه سفارش</Link>
               </button>
           ):
               isLoading ? (
                 <Circles  height='50px' color='blue' />
                  ) :(
-                <button onClick={cartHandler} className='btn btn--primary shadow-lg'>
+                <button onClick={cartHandler} className='btn btn--primary shadow-lg w-full'>
                   اضافه کردن به سبد خرید
                 </button>)
               }

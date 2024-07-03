@@ -54,7 +54,6 @@ const productsListsTitles = [
 
 
 const ProductForm = ({
-    formik,
     onSubmitProduct,
     onChange,
     value,
@@ -71,7 +70,7 @@ const ProductForm = ({
  
   return (
     
-        <form onSubmit={formik?.handleSubmit || onSubmitProduct} className={className}>
+        <form onSubmit={onSubmitProduct} className={className}>
                         {
                           productsListsTitles.map(item => {
                             return <Text_Field
@@ -79,8 +78,7 @@ const ProductForm = ({
                                         label={item.label }
                                         name={item.name }
                                         value={value[item.name] ?? '' }
-                                        onChange={formik?.handleChange || onChange}
-                                        onBlur={formik?.handleBlur}
+                                        onChange={onChange}
                                     />
                           })
                             }
@@ -89,8 +87,8 @@ const ProductForm = ({
                             value={selectedCategory}
                             options={categories}
                             onChange={setSelectedCategory}
-                            getOptionLabel={(option)=>option.title}        
-                            getOptionValue={(option)=>option._id}
+                            getOptionLabel={(option)=>option?.title}        
+                            getOptionValue={(option)=>option?._id}
                           />
                           <TagsInput
                               value={tags}

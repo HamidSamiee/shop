@@ -2,32 +2,31 @@
 import React, { useState } from 'react'
 import ProductsTable from './ProductsTable'
 import { useAddProduct, useGetProducts } from '@/hooks/useProducts'
-import { Circles, ThreeDots } from 'react-loader-spinner';
+import { ThreeDots } from 'react-loader-spinner';
 import { IoAddCircle, IoCloseOutline } from 'react-icons/io5';
-import { useFormik } from 'formik';
 import { useGetCategories } from '@/hooks/useCategories';
 import toast from 'react-hot-toast';
-import { useRouter } from 'next/navigation';
 import ProductForm from '@/components/productForm';
 
 
-const initialValues={
-      title: "",
-      description: "",
-      slug: "",
-      brand: "",
-      price: "",
-      offPrice: "",
-      discount: "",
-      countInStock: "",
-      imageLink: "",
-    }
+
 
 const Products = () => {
 
   const [modal, setModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [tags, setTags] = useState([]);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    slug: "",
+    brand: "",
+    price: "",
+    offPrice: "",
+    discount: "",
+    countInStock: "",
+    imageLink: "",
+  });
 
   const { refetch ,isLoading, data } = useGetProducts();
   const { products } = data || {};
@@ -37,12 +36,15 @@ const Products = () => {
  
   const { isLoading: isProducting, mutateAsync } = useAddProduct();
   
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   
-  const onSubmit = async (values) => {
+  const handleSubmit = async (e) => {
     // console.log({values,Tags,selectedCategory})
-    
+    e.preventDefault();
      try {
-       const { message } = await mutateAsync({...values,tags,category:selectedCategory._id});
+       const { message } = await mutateAsync({...formData,tags,category:selectedCategory._id});
        setModal(false);
        refetch();
        toast.success(message);
@@ -50,12 +52,7 @@ const Products = () => {
       toast.error(error?.response?.data?.message)
      }
   }
-  // const validationSchema=
-  const formik= useFormik({
-    initialValues,
-    onSubmit
-  })
- 
+  
 
   return (
     <div className='relative h-full w-full'>
@@ -75,9 +72,10 @@ const Products = () => {
               </header>
               <hr className='text-black w-full h-0.5 my-2' />
               <section>
-                    <ProductForm
-                        formik={formik}
-                        value={formik.values.name}
+              <ProductForm
+                        onSubmitProduct={handleSubmit}
+                        value={formData}
+                        onChange={handleChange}
                         selectedCategory={selectedCategory}
                         setSelectedCategory={setSelectedCategory}
                         categories={categories}
@@ -86,7 +84,8 @@ const Products = () => {
                         onClose={()=>setModal(prev=>!prev)}
                         isProducting={isProducting}
                         btnLabel='افزودن محصول'
-                    />
+              />
+               
               </section>
             </div>
         </div>

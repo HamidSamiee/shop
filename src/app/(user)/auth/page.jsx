@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import SendOTPForm from './SendOTPForm';
 import toast from 'react-hot-toast';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { checkOtp, getOtp } from '@/services/authServices';
 import CheckOTPForm from './CheckOTPForm';
 import { useRouter } from 'next/navigation';
@@ -10,6 +10,7 @@ const RESEND_TIME = 90;
 
 const AuthPage = () => {
 
+    const queryClient = useQueryClient();
     const [phoneNumber, setPhoneNumber] = useState("");
     const [otp, setOtp] = useState('');
     const [step, setStep] = useState(1);
@@ -56,6 +57,7 @@ const AuthPage = () => {
             toast.success(message)
             if (user.isActive) {
                 router.push("/");
+                
             } else {
                 router.push("/complete-profile")
             }
@@ -91,8 +93,8 @@ const AuthPage = () => {
     }
 
   return (
-    <div className='flex justify-center '>
-        <div className='w-full sm:max-w-sm'>
+    <div className='flex justify-center w-full'>
+        <div className='w-2/4  sm:max-w-sm'>
               {
                   renderSteps()
               }

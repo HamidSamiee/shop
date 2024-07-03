@@ -1,5 +1,5 @@
 'use client'
-import useGetPayments from '@/hooks/usePayments'
+import {useGetPayments} from '@/hooks/usePayments'
 import React from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import PaymentTable from './PaymentTable'
@@ -8,7 +8,7 @@ const Payments = () => {
 
     const {isLoading, data} = useGetPayments();
     const {payments} = data || {};
-    // console.log(payments)
+    console.log(payments)
     if (isLoading) return <div className="flex justify-center">
         <ThreeDots color='blue' />
     </div>

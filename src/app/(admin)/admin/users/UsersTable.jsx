@@ -7,7 +7,7 @@ import { FaCheckCircle } from 'react-icons/fa'
 
 const UsersTable = ({users}) => {
   return (
-    <div className="overflow-auto shadow-xl rounded-lg">
+    <div className=" overflow-auto shadow-xl rounded-lg w-full">
               <table className="">
                         <thead>
                             <tr>

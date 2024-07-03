@@ -4,6 +4,8 @@ import vazirFont from "../../constants/localFonts";
 import "../globals.css";
 import { Toaster } from "react-hot-toast";
 import Providers from "../Providers";
+import Footer from "../Footer";
+import ScrollToTopButton from "@/components/scrollToTopButton";
 
 
 
@@ -19,9 +21,11 @@ export default function RootLayout({ children }) {
         <Providers>
           <Toaster />
           <Header />
-          <div className="container xl:max-w-screen-xl">
+          <div className="container xl:max-w-screen-xl overflow-x-hidden">
             {children}
+            <ScrollToTopButton />  
           </div>
+          <Footer />
         </Providers>
       </body>
     </html>
