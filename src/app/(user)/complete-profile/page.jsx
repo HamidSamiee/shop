@@ -2,7 +2,7 @@
 import { completeProfile } from '@/services/authServices';
 import { useMutation } from '@tanstack/react-query';
 import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast';
 import { Circles } from 'react-loader-spinner';

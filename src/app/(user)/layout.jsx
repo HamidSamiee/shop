@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast";
 import Providers from "../Providers";
 import Footer from "../Footer";
 import ScrollToTopButton from "@/components/scrollToTopButton";
+import { Suspense } from "react";
 
 
 
@@ -20,7 +21,10 @@ export default function RootLayout({ children }) {
       <body className={`${vazirFont.variable} font-sans`} suppressHydrationWarning={true}>
         <Providers>
           <Toaster />
-          <Header />
+          <Suspense>
+            <Header />
+          </Suspense>
+          
           <div className="container xl:max-w-screen-xl overflow-x-hidden">
             {children}
             <ScrollToTopButton />  

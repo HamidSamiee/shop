@@ -6,7 +6,7 @@ import { ThreeDots } from 'react-loader-spinner';
 import { IoAddCircle, IoCloseOutline } from 'react-icons/io5';
 import { useGetCategories } from '@/hooks/useCategories';
 import toast from 'react-hot-toast';
-import ProductForm from '@/components/productForm';
+import ProductForm from '@/components/ProductForm';
 
 
 

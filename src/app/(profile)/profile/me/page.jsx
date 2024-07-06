@@ -4,7 +4,7 @@ import useGetUser from '@/hooks/useGetUser';
 import { updateProfile } from '@/services/authServices';
 import { includeObj } from '@/utils/objectUtils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import toast from 'react-hot-toast';
 import { Circles, ThreeDots } from 'react-loader-spinner';
 
@@ -15,11 +15,11 @@ const MePanel = () => {
      const { user } = data || {};
      const {isLoading:isUpdating,mutateAsync}=useMutation({mutationFn:updateProfile})
 
-    const userkeys = ['name', 'email', 'phoneNumber', 'biography'];
+    const userkeys = useMemo(()=>['name', 'email', 'phoneNumber', 'biography'],[]);
 
      useEffect(() => {
         if (user) setFormData(includeObj(user, userkeys));
-     }, [user]);
+     }, [user,userkeys]);
 
     // includeObj return a Object with  name and value userKeys array 
   const submitHandler = async(e) => {

@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import SendOTPForm from './SendOTPForm';
 import toast from 'react-hot-toast';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { checkOtp, getOtp } from '@/services/authServices';
 import CheckOTPForm from './CheckOTPForm';
 import { useRouter } from 'next/navigation';
@@ -10,7 +10,7 @@ const RESEND_TIME = 90;
 
 const AuthPage = () => {
 
-    const queryClient = useQueryClient();
+    
     const [phoneNumber, setPhoneNumber] = useState("");
     const [otp, setOtp] = useState('');
     const [step, setStep] = useState(1);
