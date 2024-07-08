@@ -5,7 +5,7 @@ import AddToCart from '../AddToCart';
 import Image from 'next/image';
 
 export const dynamicParams = false;
-export const dynamic = 'force-static';
+export const dynamic = "force-static";
 
 const Product =async ({ params }) => {
     
@@ -59,7 +59,7 @@ export default Product
 export async function generateStaticParams() {
   const {products} = await getAllProducts()
  
-  return products.map((product) => ({
+  return products?.map((product) => ({
     slug: product.slug,
   }))
 }

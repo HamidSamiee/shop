@@ -1,6 +1,6 @@
 
 import React, { Suspense } from 'react'
-import ProductsFilter from './productsFilter'
+import ProductsFilter from './ProductsFilter'
 import ProductsSort from './ProductsSort'
 
 const CategorySidebar = ({categories}) => {

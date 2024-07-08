@@ -5,7 +5,7 @@ import "../globals.css";
 import { Toaster } from "react-hot-toast";
 import Providers from "../Providers";
 import Footer from "../Footer";
-import ScrollToTopButton from "@/components/scrollToTopButton";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 import { Suspense } from "react";
 
 
