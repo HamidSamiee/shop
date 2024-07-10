@@ -2,6 +2,9 @@
     "platform": "next",
     "app": "hskala",
     "port": 3000,
+    "next": {
+    "mirror": false
+    },
     "disks": [
     {
       "name": "my-disk",
