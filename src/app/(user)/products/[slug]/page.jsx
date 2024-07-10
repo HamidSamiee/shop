@@ -4,8 +4,11 @@ import React from 'react'
 import AddToCart from '../AddToCart';
 import Image from 'next/image';
 
-export const dynamicParams = false;
 export const dynamic = "force-static";
+
+export const dynamicParams = false;
+
+
 
 const Product =async ({ params }) => {
     

@@ -5,7 +5,7 @@
     "disks": [
     {
       "name": "my-disk",
-      "mountTo": "public/images"
+      "mountTo": "public"
     }
   ]
   }
