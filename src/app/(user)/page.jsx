@@ -149,7 +149,7 @@ export default function Home() {
       <section className=" mt-12 p-3 mx-4 border-4 border-red-600 rounded-lg flex flex-col gap-y-2">
          <div className="relative block mx-3 rounded-lg overflow-hidden">
               <Image 
-                src={`${inerWidth < 768 ? '/images/logo/f.webp' :'/images/logo/fH.webp'}`}
+                src={`${inerWidth < 768 ? '/images/logo/f.webp' :'/images/logo/h.webp'}`}
                 alt=""
                 unoptimized
                 sizes="100vw"
