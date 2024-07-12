@@ -52,7 +52,6 @@ console.log(queryString.stringify(searchParams))
                                                   <Image  
                                                       src={product?.imageLink}
                                                       alt={product?.englishTitle}
-                                                      layout='responsive'
                                                       blurDataURL={product?.imageLink}
                                                       placeholder='blur'
                                                       width={150}

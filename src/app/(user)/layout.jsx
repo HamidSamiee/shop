@@ -17,18 +17,21 @@ export const metadata = {
   icon: "/favicon.ico",
   
 };
+export const viewport={
+  themeColor: '#60efff'
+}
 
 export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
-      <body className={`${vazirFont.variable} font-sans`} suppressHydrationWarning={true}>
+      <body className={`${vazirFont.variable} font-sans flex flex-col min-h-screen`} suppressHydrationWarning={true}>
         <Providers>
           <Toaster />
           <Suspense>
             <Header />
           </Suspense>
           
-          <div className="container xl:max-w-screen-xl overflow-x-hidden">
+          <div className="container xl:max-w-screen-xl overflow-x-hidden flex-grow">
             {children}
             <ScrollToTopButton />  
           </div>
