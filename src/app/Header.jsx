@@ -4,7 +4,7 @@ import useGetUser from '@/hooks/useGetUser'
 import {toPersianDigits} from '@/utils/toPersianDigits'
 import Link from 'next/link'
 import {  useRouter, useSearchParams } from 'next/navigation'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FaChevronLeft, FaHome, FaMobileAlt, FaUser } from 'react-icons/fa'
 import { IoMenu, IoSearch, IoClose,IoLogInOutline, IoLogOut } from 'react-icons/io5';
 import 'react-tooltip/dist/react-tooltip.css';
@@ -34,8 +34,8 @@ const Header = () => {
     const ref=useOutsideClick(()=>setDropdownMenu(false))
     
 
-    const { data:dataUser } = useGetUser();
-    const {data,isLoading} = useGetProducts();
+    const { data:dataUser,isLoading } = useGetUser();
+    // const {data,isLoading} = useGetProducts();
 
     // console.log(dropdownMenu)
     
@@ -43,7 +43,8 @@ const Header = () => {
     const { user, cart } = dataUser || {};
     // console.log({ user, cart })
     
-
+   
+   
 
    const searchParams = useSearchParams();
    const [searchInput, setSearchInput] = useState(searchParams.get("search") || [] );
