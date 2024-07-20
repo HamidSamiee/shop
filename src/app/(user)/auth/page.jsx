@@ -40,8 +40,9 @@ const AuthPage = () => {
     const sendOtpHandler = async(e) => {
         e.preventDefault();
         try {
-            const data = await mutateGetOtp({phoneNumber});
-            toast.success(data.message);
+            // const data = await mutateGetOtp({phoneNumber});
+            // toast.success(data.message);
+            toast.success('کد تایید به شماره شما ارسال شد');
             setStep(2);
             setTime(RESEND_TIME);
             setOtp('');

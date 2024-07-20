@@ -147,7 +147,7 @@ export default function Home() {
         </Swiper>
       </div>
       <section className=" mt-12 p-3 mx-4 border-4 border-red-600 rounded-lg flex flex-col gap-y-2">
-         <div className="hidden md:block relative mx-3 rounded-lg overflow-hidden">
+         <div className="relative block  mx-3 rounded-lg overflow-hidden">
               <Image 
                 src='/images/logo/h.webp'
                 alt=""
@@ -158,7 +158,7 @@ export default function Home() {
                 className={`p-1 w-full ${inerWidth < 1024 ? 'object-cover' : 'object-contain'} `}
               />
          </div>
-         <div className="relative block mx-3 rounded-lg overflow-hidden md:hidden">
+         {/* <div className="relative block mx-3 rounded-lg overflow-hidden md:hidden">
               <Image 
                 src='/images/logo/f.webp'
                 alt=""
@@ -168,7 +168,7 @@ export default function Home() {
                 height={56}
                 className={`p-1 w-full ${inerWidth < 1024 ? 'object-cover' : 'object-contain'} `}
               />
-         </div>
+         </div> */}
          <Swiper
           slidesPerView={inerWidth < 480 ? 1 : inerWidth < 768 ? 2 : inerWidth < 1024 ? 3 : 4}
           spaceBetween={10}
