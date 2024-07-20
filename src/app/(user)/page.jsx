@@ -164,7 +164,7 @@ export default function Home() {
                 alt=""
                 unoptimized
                 sizes="100vw"
-                width={1191}
+                width={510}
                 height={56}
                 className={`p-1 w-full ${inerWidth < 1024 ? 'object-cover' : 'object-contain'} `}
               />
